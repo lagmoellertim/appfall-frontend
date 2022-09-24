@@ -1,4 +1,6 @@
 <script>
+  import {HOST} from "../../config.js";
+
   "@hmr:keep-all";
   import 'ol/ol.css';
   import Map from "ol/Map.js";
@@ -113,7 +115,7 @@
     console.log(lat,lon);
 
       // let heliumGateways = await fetch(`http://localhost:8001/disposal_sites?lat=${lon}&long=${lat}&radius=10000&bins=recycling_yard`);
-      let heliumGateways = await fetch(`http://localhost:8001/disposal_sites?lat=${lon}&long=${lat}&radius=10000`);
+      let heliumGateways = await fetch(`http://${HOST}/disposal_sites?lat=${lon}&long=${lat}&radius=10000`);
       // gatewaysSource.clear();
       try {
         if (heliumGateways.status == 200) {

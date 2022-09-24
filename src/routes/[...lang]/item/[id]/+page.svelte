@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { t, locale } from "$lib/translations";
   import { page } from '$app/stores';
+  import {HOST} from "../../../../config.js";
 
   let data;
 
@@ -21,7 +22,7 @@
     "yellow":"Werststofftonne",
   }
   onMount(async () => {
-    const response = await fetch("http://localhost:8001/disposal_items/" + $page.params.id, {
+    const response = await fetch(`http://${HOST}/disposal_items/` + $page.params.id, {
       method: "GET",
       headers: {
         "Accept": "*/*",

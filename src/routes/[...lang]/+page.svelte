@@ -1,4 +1,6 @@
 <script>
+    import {HOST} from "../../config.js";
+
     '@hmr:keep-all'
     import { t, locale } from '$lib/translations';
 	import { slide,fade } from 'svelte/transition';
@@ -33,7 +35,7 @@
     //transform image from acceptedFiles Array into a multipart and send it to the server
     const form = new FormData()
     form.append("file", acceptedFiles[0])
-    let response = await fetch('http://localhost:8001/search/image', {
+    let response = await fetch(`http://${HOST}/search/image`, {
         method: 'POST',
         body: form,
         headers: {
@@ -58,7 +60,7 @@
     async function refreshData(){
         loading=true;
         await timeout(100)
-        const response = await fetch('http://localhost:8001/restriction?'+stringify(attributes), {
+        const response = await fetch(`http://${HOST}/restriction?`+stringify(attributes), {
         method: 'GET',
         headers: {
             'Accept': '*/*',
